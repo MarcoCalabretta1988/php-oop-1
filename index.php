@@ -42,12 +42,12 @@ foreach ($movies as $movie) {
                 </tr>
             </thead>
             <tbody>
-                <? foreach ($movies_object as $key => $movie) : ?>
+                <?php foreach ($movies_object as $key => $movie) : ?>
                     <tr>
                         <th scope="row"><?= $key + 1 ?></th>
                         <td><?= $movie->title ?></td>
                         <td>
-                            <? foreach ($movie->genres as $genre) : ?>
+                            <?php foreach ($movie->genres as $genre) : ?>
                                 <?= $genre->name ?>
                                 <br>
                             <? endforeach; ?>
