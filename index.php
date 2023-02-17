@@ -50,12 +50,12 @@ foreach ($movies as $movie) {
                             <?php foreach ($movie->genres as $genre) : ?>
                                 <?= $genre->name ?>
                                 <br>
-                            <? endforeach; ?>
+                            <?php endforeach; ?>
                         </td>
                         <td><?= $movie->plot ?></td>
                         <td><?= $movie->vote ?></td>
                     </tr>
-                <? endforeach; ?>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
