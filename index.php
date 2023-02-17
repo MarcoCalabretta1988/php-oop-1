@@ -7,7 +7,8 @@ include_once __DIR__ . '/models/Movie.php';
 $movies_object = [];
 foreach ($movies as $movie) {
     $movie_genre = new Genre($movie['genre']);
-    $new_movie = new Movie($movie['title'], $movie_genre, $movie['plot'], $movie['vote']);
+    $add_genre = new Genre($movie['genre_add']);
+    $new_movie = new Movie($movie['title'], [$movie_genre, $add_genre], $movie['plot'], $movie['vote']);
     $movies_object[] = $new_movie;
 }
 
@@ -45,7 +46,12 @@ foreach ($movies as $movie) {
                     <tr>
                         <th scope="row"><?= $key + 1 ?></th>
                         <td><?= $movie->title ?></td>
-                        <td><?= $movie->genre->name ?></td>
+                        <td>
+                            <? foreach ($movie->genres as $genre) : ?>
+                                <?= $genre->name ?>
+                                <br>
+                            <? endforeach; ?>
+                        </td>
                         <td><?= $movie->plot ?></td>
                         <td><?= $movie->vote ?></td>
                     </tr>

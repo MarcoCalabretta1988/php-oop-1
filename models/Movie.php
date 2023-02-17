@@ -3,14 +3,14 @@ include_once __DIR__ . '/Genre.php';
 class Movie
 {
     public $title;
-    public $genre;
+    public $genres;
     public $vote;
     public $plot;
 
-    public function __construct($title, Genre $genre, $plot, $vote = 0)
+    public function __construct($title, array $genres, $plot, $vote = 0)
     {
         $this->title = $title;
-        $this->genre = $genre;
+        $this->genres = $genres;
         $this->vote = $vote;
         $this->plot = $plot;
     }
