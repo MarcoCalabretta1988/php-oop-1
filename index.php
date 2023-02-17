@@ -41,9 +41,9 @@ foreach ($movies as $movie) {
                 </tr>
             </thead>
             <tbody>
-                <? foreach ($movies_object as $movie) : ?>
+                <? foreach ($movies_object as $key => $movie) : ?>
                     <tr>
-                        <th scope="row">1</th>
+                        <th scope="row"><?= $key + 1 ?></th>
                         <td><?= $movie->title ?></td>
                         <td><?= $movie->genre->name ?></td>
                         <td><?= $movie->plot ?></td>
