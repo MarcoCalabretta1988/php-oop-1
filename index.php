@@ -1,29 +1,15 @@
 <?php
 
+include_once __DIR__ . '/db.php';
+include_once __DIR__ . '/models/Movie.php';
 
-class Movie
-{
-    public $title;
-    public $genre;
-    public $vote;
-    public $plot;
 
-    public function __construct($title, $genre, $plot, $vote = 0)
-    {
-        $this->title = $title;
-        $this->genre = $genre;
-        $this->vote = $vote;
-        $this->plot = $plot;
-    }
-
-    public function plotExtract($max = 0)
-    {
-        return $extract = substr($this->plot, 1, $max) . '...';
-    }
-};
-
-$movie1 = new Movie('Il signore degli anelli - la compagnia dell\'anello', 'fantasy', "Il Signore degli Anelli narra della missione di nove Compagni, la Compagnia dell'Anello, partiti per distruggere il più potente Anello del Potere, un'arma che renderebbe invincibile il suo malvagio creatore Sauron se tornasse nelle sue mani, dandogli il potere di dominare tutta la Terra di Mezzo.", 5);
-$movie2 = new Movie('Terminator', 'Sci-Fi', "(The Terminator) è un film del 1984 diretto da James Cameron. La trama fantascientifica, scritta da Cameron con Gale Anne Hurd, è incentrata sul personaggio del titolo, un cyborg assassino (interpretato da Arnold Schwarzenegger) inviato indietro nel tempo dal 2029 al 1984 per uccidere Sarah Connor (Linda Hamilton), il cui figlio un giorno diventerà un salvatore contro le macchine in un futuro postapocalittico", 4);
+$movies_object = [];
+foreach ($movies as $movie) {
+    $movie_genre = new Genre($movie['genre']);
+    $new_movie = new Movie($movie['title'], $movie_genre, $movie['plot'], $movie['vote']);
+    $movies_object[] = $new_movie;
+}
 
 ?>
 
@@ -55,21 +41,15 @@ $movie2 = new Movie('Terminator', 'Sci-Fi', "(The Terminator) è un film del 198
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td><?= $movie1->title ?></td>
-                    <td><?= $movie1->genre ?></td>
-                    <td><?= $movie1->plot ?></td>
-                    <td><?= $movie1->vote ?></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td><?= $movie2->title ?></td>
-                    <td><?= $movie2->genre ?></td>
-                    <td><?= $movie2->plot ?></td>
-                    <td><?= $movie2->vote ?></td>
-                </tr>
-
+                <? foreach ($movies_object as $movie) : ?>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td><?= $movie->title ?></td>
+                        <td><?= $movie->genre->name ?></td>
+                        <td><?= $movie->plot ?></td>
+                        <td><?= $movie->vote ?></td>
+                    </tr>
+                <? endforeach; ?>
             </tbody>
         </table>
     </div>
