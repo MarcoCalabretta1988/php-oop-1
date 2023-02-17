@@ -29,9 +29,9 @@ foreach ($movies as $movie) {
 </head>
 
 <body>
-    <div class="container">
+    <div class="container bg-dark rounded">
 
-        <table class="table my-5">
+        <table class="table my-5 text-white  rounded">
             <thead>
                 <tr>
                     <th scope="col">N°</th>

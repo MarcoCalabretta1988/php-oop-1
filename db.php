@@ -11,7 +11,7 @@ $movies = [
     ],
     [
         'id' => 2,
-        'title' => 'Il signore degli anelli - la compagnia dell\'anello',
+        'title' => 'Terminator',
         'genre' => 'Sci-Fi',
         'genre_add' => 'Fantasy',
         'vote' => 4,
